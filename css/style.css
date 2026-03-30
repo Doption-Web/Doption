@@ -391,7 +391,6 @@ body {
     grid-template-columns: 1fr !important;
     grid-auto-flow: row;
     gap: 1rem;
-    text-align: center;
   }
 }
 
