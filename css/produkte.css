@@ -1,0 +1,248 @@
+/* GRID UND KARTE */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+}
+
+/* BILDER */
+.product-overview .container {
+  padding-top: 0;
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.thumbs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+
+  border: 1px solid #ddd;   /* leichte Kontur */
+  background: #fff;         /* verhindert optisches Schweben */
+
+  transition: border 0.2s, transform 0.15s;
+}
+
+.thumb:hover {
+  border: 1px solid #222;
+  transform: translateY(-1px);
+}
+
+/* PRODUKTINFOS */
+.product-card h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  flex-grow: 1;
+  margin-bottom: 0.8rem;
+}
+
+/* BUTTONS */
+/* Standard: Buttons nebeneinander */
+.product-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Ungerade Anzahl >1: erster Button volle Breite */
+.product-buttons.odd .btn:first-child {
+  flex-basis: 100%;
+}
+
+.product-buttons .btn {
+  text-align: center;
+  border: 1px solid #222;
+  padding: 0.5rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.product-buttons .btn.recommended {
+  background: #222;
+  color: #fff;
+  font-weight: bold;
+}
+
+.product-buttons .btn.recommended:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+/* BESTSELLER */
+.product-card.bestseller .product-images::before {
+  content: "Bestseller";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  background: #ff9900;
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  z-index: 2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .thumbs {
+    justify-content: flex-start;
+  }
+  .thumb {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.product-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Desktop: ungerade Anzahl → erster Button volle Breite */
+@media (min-width: 700px) {
+  .product-buttons.odd .btn:first-child {
+    flex-basis: 100%;
+  }
+
+  .product-buttons .btn {
+    flex: 1 1 auto; /* alle Buttons nebeneinander */
+  }
+}
+
+/* Standard: Desktop Buttons nebeneinander */
+.product-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Desktop ≥700px: erster Button volle Breite bei ungerader Anzahl */
+@media (min-width: 700px) {
+  .product-buttons.odd .btn:first-child {
+    flex-basis: 100%;
+  }
+
+  .product-buttons .btn {
+    flex: 1 1 auto; /* alle Buttons nebeneinander */
+  }
+}
+
+/* Desktop ≥700px: Grid-Layout für Buttons */
+@media (min-width: 700px) {
+  .product-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Spalten */
+    gap: 0.5rem;
+  }
+
+  /* Ungerade Anzahl: erster Button volle Breite */
+  .product-buttons.odd .btn:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop: nebeneinander → gleiche Höhe */
+@media (min-width: 700px) {
+  .product-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: stretch; /* alle Buttons in einer Reihe gleiche Höhe */
+  }
+
+  .product-buttons.odd .btn:first-child {
+    flex-basis: 100%; /* erster Button volle Breite bei ungerade */
+  }
+
+  .product-buttons .btn {
+    flex: 1 1 auto;      /* alle Buttons nebeneinander */
+    display: flex;        /* für vertikale Zentrierung */
+    justify-content: center;
+    align-items: center;  /* vertikal mittig, auch bei Umbruch */
+    text-align: center;
+  }
+}
+
+/* Standard: Desktop Grid */
+@media (min-width: 700px) {
+  .product-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* min 150px, max gleichmäßig */
+    gap: 0.5rem;
+  }
+
+  /* Ungerade Anzahl → erster volle Breite */
+  .product-buttons.odd .btn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .product-buttons .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Mobile: untereinander, volle Breite */
+@media (max-width: 700px) {
+  .product-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .product-buttons .btn {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    text-align: center;
+    flex: none;
+  }
+}
+
+.product-images {
+  position: relative;
+}
+
+.main-video,
+.main-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;  /* sorgt dafür, dass es den Container komplett ausfüllt */
+}
+
+.brand-note {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 10px;
+}

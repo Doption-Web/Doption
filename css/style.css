@@ -1,0 +1,469 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  color: #222;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.logo img {
+  width: clamp(100px, 10vw, 180px);
+  height: auto;
+}
+
+/* HEADER */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 1000px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+/* NAVIGATION */
+
+.site-header .container {
+  max-width: none;
+}
+
+.main-nav {
+  justify-self: end;
+}
+
+.main-nav > ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  list-style: none;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.4rem 0;
+  font-size: 18px;
+
+}
+
+.main-nav a:hover {
+  color: #666;
+}
+
+/* DROPDOWN */
+.has-sub {
+  position: relative;
+}
+
+.sub-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid #ddd;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(2px);
+  z-index: 1001;
+  list-style: none;
+  padding-left: 0; 
+}
+
+.sub-nav li a {
+  padding: 0.4rem 1rem;
+  display: block;
+  white-space: nowrap;
+}
+
+.sub-nav li a:hover {
+  background: #f5f5f5;
+}
+
+.has-sub:hover .sub-nav {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.hero-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+}
+
+/* Schriftgröße proportional zur Bildschirmbreite */
+.brand {
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 5vw;
+  max-font-size: 4rem;
+  margin-bottom: 0.1rem;
+}
+
+.hero-overlay p {
+  font-size: 2.5vw;
+  max-font-size: 2rem;
+  line-height: 1.1;
+}
+
+/* Animations-Effekte */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: reveal 1.6s ease forwards;
+}
+
+.reveal.delay {
+  animation-delay: 0.5s;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* STATS */
+.bg-gray {
+  background: #f5f5f5;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.stats-grid strong {
+  display: block;
+  font-size: 1.5rem;
+}
+
+/* PRODUCTS */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch; /* sorgt dafür, dass alle Karten gleich hoch werden */
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  height: 100%;        /* volle Höhe der Grid-Zelle */
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* immer quadratisch */
+  object-fit: cover;
+  border-radius: 8px;  /* optional, wie die Kennzahlen-Kästen */
+}
+
+/* Nur Buttons in Produktkarten */
+.product-card .btn {
+  margin-top: auto;         /* nur hier unten halten */
+  border-radius: 8px;       /* abgerundet */
+  display: inline-flex;     /* Form beibehalten */
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #222;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Alle anderen Buttons (z.B. Bewertungen, Kooperationen) bleiben unverändert */
+.btn:not(.product-card .btn) {
+  border-radius: 8px;       /* optional: abrunden für Einheitlichkeit */
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #222;
+  display: inline-block;
+}
+
+/* Hover-Effekt für Buttons außerhalb der Produktkarten */
+.btn:not(.product-card .btn):hover {
+  background: #222;   /* dunkler Hintergrund beim Hover */
+  color: #fff;        /* Text weiß */
+}
+
+/* optional: hover bleibt */
+.btn:hover {
+  background: #222;
+  color: #fff;
+}
+
+.btn-inline {
+  width: auto;
+  justify-self: start;
+}
+
+/* COOPERATION */
+
+.cooperation-list {
+  list-style: disc;       /* oder circle, square */
+  padding-left: 0;        /* entfernt Browser-Einrückung */
+  margin: 1rem 0 1rem 0; /* Abstand: oben 1rem, unten 1.5rem */
+}
+
+.cooperation-list li {
+  margin-left: 1.2em;     /* Abstand zwischen Bullet und Text */
+}
+
+.cooperation {
+  background: #f5f5f5;
+}
+
+.cooperation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.cooperation-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* REVIEWS */
+.reviews-grid {
+  display: grid;
+  place-items: center;
+}
+
+.reviews-grid > div {
+  max-width: 600px;
+  width: 100%;
+}
+
+.reviews-grid h2,
+.reviews-grid p {
+  text-align: left;
+}
+
+.reviews img {
+  width: 100%;
+  max-width: 600px;
+  margin: 1.5rem 0;
+  display: block;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #111;
+  color: #fff;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.site-footer ul {
+  list-style: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.85rem;
+  border-top: 1px solid #333;
+}
+
+.site-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  color: #ccc;
+}
+
+/* Bilder abrunden außer Hero */
+.product-image,
+.cooperation-image,
+.reviews img {
+  border-radius: 8px;
+}
+
+/* Buttons abrunden */
+.btn {
+  border-radius: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .header-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .products-grid,
+  .stats-grid,
+  .cooperation-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    grid-auto-flow: row;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-nav {
+    justify-self: start;   /* Navigation nach links */
+  }
+
+  .main-nav ul {
+    align-items: flex-start; /* Linksbündig statt zentriert */
+  }
+}
+
+/* DESKTOP: Navigation rechts */
+@media (min-width: 701px) {
+  .main-nav > ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
+
+  .main-nav {
+    display: block !important;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+
+/* MOBILE HEADER FIX */
+@media (max-width: 700px) {
+
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1fr auto; /* links Logo, rechts Button */
+    grid-template-rows: auto auto;   /* darunter Menü */
+    align-items: center;
+  }
+
+  .logo {
+    grid-column: 1 / 2;
+  }
+
+  .nav-toggle {
+    grid-column: 2 / 3;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #222;
+  }
+
+  /* Menü unter Logo */
+  .main-nav {
+    grid-column: 1 / 3;
+    display: none;
+  }
+
+  .main-nav.active {
+    display: block;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
