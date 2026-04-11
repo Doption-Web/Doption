@@ -471,3 +471,11 @@ body {
     padding: 0.6rem 1rem;
   }
 }
+/* HEADER SPACING FIX */
+.site-header .container {
+  padding: 1rem 1.5rem; /* deutlich kompakter */
+}
+
+.header-grid {
+  align-items: center;
+}
