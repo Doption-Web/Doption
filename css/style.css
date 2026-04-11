@@ -427,7 +427,7 @@ body {
 
   .header-grid {
     display: grid;
-    grid-template-columns: 1fr auto; /* links Logo, rechts Button */
+    grid-template-columns: 0.5fr auto; /* links Logo, rechts Button */
     grid-template-rows: auto auto;   /* darunter Menü */
     align-items: center;
   }
