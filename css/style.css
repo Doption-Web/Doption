@@ -14,7 +14,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .logo img {
@@ -427,7 +427,7 @@ body {
 
   .header-grid {
     display: grid;
-    grid-template-columns: 0.5fr auto; /* links Logo, rechts Button */
+    grid-template-columns: 1fr auto; /* links Logo, rechts Button */
     grid-template-rows: auto auto;   /* darunter Menü */
     align-items: center;
   }
