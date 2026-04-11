@@ -475,8 +475,3 @@ body {
     align-items: flex-start;
   }
 }
-
-.logo,
-.nav-toggle {
-  align-self: center;
-}
