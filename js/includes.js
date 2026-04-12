@@ -1,12 +1,12 @@
-// NAV LADEN
+// NAV LADEN 
 fetch('includes/nav.html')
   .then(res => res.text())
   .then(html => {
-    document.getElementById('nav-placeholder').innerHTML = html;
+    const placeholder = document.getElementById('nav-placeholder');
+    placeholder.innerHTML = html;
 
-    // Hamburger aktivieren
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.main-nav');
+    const toggle = placeholder.querySelector('.nav-toggle');
+    const nav = placeholder.querySelector('.main-nav');
 
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
