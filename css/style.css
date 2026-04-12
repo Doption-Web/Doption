@@ -44,7 +44,6 @@ body {
 }
 
 /* NAVIGATION */
-
 .site-header .container {
   max-width: none;
 }
@@ -65,7 +64,6 @@ body {
   color: inherit;
   padding: 0.4rem 0;
   font-size: 18px;
-
 }
 
 .main-nav a:hover {
@@ -89,21 +87,11 @@ body {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: 0.2s ease;
   transform: translateY(2px);
   z-index: 1001;
   list-style: none;
-  padding-left: 0; 
-}
-
-.sub-nav li a {
-  padding: 0.4rem 1rem;
-  display: block;
-  white-space: nowrap;
-}
-
-.sub-nav li a:hover {
-  background: #f5f5f5;
+  padding-left: 0;
 }
 
 .has-sub:hover .sub-nav {
@@ -113,29 +101,31 @@ body {
   transform: translateY(0);
 }
 
+.sub-nav li a {
+  padding: 0.4rem 1rem;
+  display: block;
+}
+
+.sub-nav li a:hover {
+  background: #f5f5f5;
+}
+
 /* HERO */
 .hero {
   position: relative;
   width: 100%;
-  height: auto;
   overflow: hidden;
 }
 
 .hero-bg {
   width: 100%;
-  height: auto;
   display: block;
   object-fit: contain;
-  object-position: center;
-  z-index: 1;
 }
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   display: grid;
   place-content: center;
   text-align: center;
@@ -143,21 +133,17 @@ body {
   padding: 2rem;
 }
 
-/* Schriftgröße proportional zur Bildschirmbreite */
 .brand {
   font-family: "Times New Roman", Georgia, serif;
   font-size: 5vw;
-  max-font-size: 4rem;
   margin-bottom: 0.1rem;
 }
 
 .hero-overlay p {
   font-size: 2.5vw;
-  max-font-size: 2rem;
-  line-height: 1.1;
 }
 
-/* Animations-Effekte */
+/* ANIMATION */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -194,86 +180,46 @@ body {
   box-shadow: 0 0 8px rgba(0,0,0,0.05);
 }
 
-.stats-grid strong {
-  display: block;
-  font-size: 1.5rem;
-}
-
 /* PRODUCTS */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  align-items: stretch; /* sorgt dafür, dass alle Karten gleich hoch werden */
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  height: 100%;        /* volle Höhe der Grid-Zelle */
 }
 
 .product-image {
   width: 100%;
-  aspect-ratio: 1 / 1; /* immer quadratisch */
+  aspect-ratio: 1/1;
   object-fit: cover;
-  border-radius: 8px;  /* optional, wie die Kennzahlen-Kästen */
+  border-radius: 8px;
 }
 
-/* Nur Buttons in Produktkarten */
 .product-card .btn {
-  margin-top: auto;         /* nur hier unten halten */
-  border-radius: 8px;       /* abgerundet */
-  display: inline-flex;     /* Form beibehalten */
-  justify-content: center;
-  align-items: center;
-  padding: 0.6rem 1.4rem;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid #222;
-  transition: background 0.2s, color 0.2s;
+  margin-top: auto;
 }
 
-/* Alle anderen Buttons (z.B. Bewertungen, Kooperationen) bleiben unverändert */
-.btn:not(.product-card .btn) {
-  border-radius: 8px;       /* optional: abrunden für Einheitlichkeit */
+/* BUTTONS */
+.btn {
+  border-radius: 8px;
   padding: 0.6rem 1.4rem;
-  text-decoration: none;
-  color: inherit;
   border: 1px solid #222;
+  text-decoration: none;
   display: inline-block;
+  color: inherit;
 }
 
-/* Hover-Effekt für Buttons außerhalb der Produktkarten */
-.btn:not(.product-card .btn):hover {
-  background: #222;   /* dunkler Hintergrund beim Hover */
-  color: #fff;        /* Text weiß */
-}
-
-/* optional: hover bleibt */
 .btn:hover {
   background: #222;
   color: #fff;
 }
 
-.btn-inline {
-  width: auto;
-  justify-self: start;
-}
-
 /* COOPERATION */
-
-.cooperation-list {
-  list-style: disc;       /* oder circle, square */
-  padding-left: 0;        /* entfernt Browser-Einrückung */
-  margin: 1rem 0 1rem 0; /* Abstand: oben 1rem, unten 1.5rem */
-}
-
-.cooperation-list li {
-  margin-left: 1.2em;     /* Abstand zwischen Bullet und Text */
-}
-
 .cooperation {
   background: #f5f5f5;
 }
@@ -285,32 +231,10 @@ body {
   align-items: center;
 }
 
-.cooperation-image {
-  width: 100%;
-  object-fit: cover;
-}
-
 /* REVIEWS */
 .reviews-grid {
   display: grid;
   place-items: center;
-}
-
-.reviews-grid > div {
-  max-width: 600px;
-  width: 100%;
-}
-
-.reviews-grid h2,
-.reviews-grid p {
-  text-align: left;
-}
-
-.reviews img {
-  width: 100%;
-  max-width: 600px;
-  margin: 1.5rem 0;
-  display: block;
 }
 
 /* FOOTER */
@@ -322,11 +246,6 @@ body {
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-}
-
-.site-footer ul {
-  list-style: none;
 }
 
 .footer-bottom {
@@ -336,91 +255,14 @@ body {
   border-top: 1px solid #333;
 }
 
-.site-footer a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.site-footer a:hover {
-  color: #ccc;
-}
-
-/* Bilder abrunden außer Hero */
-.product-image,
-.cooperation-image,
-.reviews img {
-  border-radius: 8px;
-}
-
-/* Buttons abrunden */
-.btn {
-  border-radius: 8px;
-}
-
 /* RESPONSIVE */
 @media (max-width: 1000px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.4rem;
   }
 }
 
-@media (max-width: 700px) {
-  .header-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    gap: 1rem;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.8rem;
-  }
-
-  .products-grid,
-  .stats-grid,
-  .cooperation-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-    grid-auto-flow: row;
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 700px) {
-  .main-nav {
-    justify-self: start;   /* Navigation nach links */
-  }
-
-  .main-nav ul {
-    align-items: flex-start; /* Linksbündig statt zentriert */
-  }
-}
-
-/* DESKTOP: Navigation rechts */
-@media (min-width: 701px) {
-  .main-nav > ul {
-    display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
-  }
-
-  .main-nav {
-    display: block !important;
-  }
-
-  .nav-toggle {
-    display: none;
-  }
-}
-
+/* ✅ EINZIGER MOBILE BLOCK */
 @media (max-width: 700px) {
 
   .header-grid {
@@ -432,7 +274,6 @@ body {
 
   .logo img {
     width: 120px;
-    height: auto;
   }
 
   .nav-toggle {
@@ -448,9 +289,9 @@ body {
     background: #222;
   }
 
-  /* WICHTIG: verhindert Layout-Aufblähung */
   .main-nav {
     display: none;
+    width: 100%;
     grid-column: 1 / 3;
   }
 
@@ -461,14 +302,25 @@ body {
   .main-nav ul {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-
-    margin: 0;
-    padding: 0;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
     list-style: none;
   }
 
-  .main-nav a {
-    padding: 0.4rem 0;
+  .products-grid,
+  .stats-grid,
+  .cooperation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* DESKTOP FIX */
+@media (min-width: 701px) {
+  .main-nav {
+    display: block !important;
+  }
+
+  .nav-toggle {
+    display: none;
   }
 }
