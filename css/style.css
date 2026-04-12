@@ -422,49 +422,39 @@ body {
 }
 
 
+/* MOBILE HEADER FIX */
 @media (max-width: 700px) {
 
-  /* HEADER bleibt kompakt */
   .header-grid {
-    grid-template-columns: 1fr auto;
+    display: grid;
+    grid-template-columns: 1fr auto; /* links Logo, rechts Button */
+    grid-template-rows: auto auto;   /* darunter Menü */
     align-items: center;
-    padding: 0.8rem 1rem;
   }
 
-  .site-header {
-    position: relative;
+  .logo {
+    grid-column: 1 / 2;
   }
 
-  /* Logo kleiner */
-  .logo img {
-    width: 120px;
-    height: auto;
-  }
-
-  /* Burger */
   .nav-toggle {
+    grid-column: 2 / 3;
+    justify-self: end;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
     cursor: pointer;
   }
 
   .nav-toggle span {
-    width: 24px;
-    height: 2px;
+    width: 28px;
+    height: 3px;
     background: #222;
   }
 
-  /* WICHTIG: Menü aus Flow lösen */
+  /* Menü unter Logo */
   .main-nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
+    grid-column: 1 / 3;
     display: none;
-    border-top: 1px solid #ddd;
-    z-index: 999;
   }
 
   .main-nav.active {
@@ -472,21 +462,8 @@ body {
   }
 
   .main-nav ul {
-    display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.8rem 1rem;
-    margin: 0;
-    list-style: none;
-  }
-
-  .main-nav a {
-    padding: 0.5rem 0;
+    gap: 1rem;
   }
 }
 
-@media (max-width: 700px) {
-  .container {
-    padding: 1rem 1rem;
-  }
-}
