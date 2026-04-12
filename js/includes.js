@@ -1,20 +1,31 @@
-fetch('includes/nav.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('nav-placeholder').innerHTML = html;
+document.addEventListener("DOMContentLoaded", () => {
 
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.main-nav');
+  fetch('includes/nav.html', { cache: "no-store" })
+    .then(res => res.text())
+    .then(html => {
 
-    if (toggle && nav) {
-      toggle.addEventListener('click', function () {
-        nav.classList.toggle('active');
+      const placeholder = document.getElementById('nav-placeholder');
+      placeholder.innerHTML = html;
+
+      requestAnimationFrame(() => {
+
+        const toggle = placeholder.querySelector('.nav-toggle');
+        const nav = placeholder.querySelector('.main-nav');
+
+        if (toggle && nav) {
+          toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+          });
+        }
+
       });
-    }
-  });
 
-fetch('includes/footer.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('footer').innerHTML = html;
-  });
+    });
+
+  fetch('includes/footer.html', { cache: "no-store" })
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer').innerHTML = html;
+    });
+
+});
