@@ -1,0 +1,153 @@
+/* Abstand Überschrift -> Blöcke reduziert */
+.coop-types h2,
+.coop-existing h2 {
+  margin-bottom: 1.5rem; /* weniger Abstand zwischen Intro und Blöcken */
+}
+
+/* Grid für Mögliche Kooperationsmodelle */
+.coop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch; /* gleiche Höhe */
+}
+
+/* Grid Bestehende Kooperationen */
+.coop-existing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch; /* gleiche Höhe */
+}
+
+/* Karten Mögliche Kooperationen */
+.coop-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* BEISPIEL KOOPERATION */
+.coop-example {
+  background: #f5f5f5; /* grauer Hintergrund */
+}
+
+.coop-example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.coop-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.coop-text {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.coop-partner-logo {
+  display: block;
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Abstand zwischen Überschrift und Unterüberschrift reduzieren */
+.coop-text h2 {
+  margin-bottom: 1rem;
+}
+
+.coop-text h3 {
+  font-weight: normal;
+  color: #555;
+}
+
+.coop-text p {
+  line-height: 1.6;
+  color: #222;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .coop-partner-logo {
+    width: 100px;
+  }
+}
+
+/* CTA linksbündig */
+.coop-cta {
+  text-align: left;
+}
+
+.coop-cta .btn {
+  margin-top: 1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .coop-grid,
+  .coop-existing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Partner im gemeinsamen grauen Bereich */
+.coop-partner + .coop-partner {
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+  padding-top: clamp(1.75rem, 4vw, 3rem);
+  border-top: 1px solid #d8d8d8;
+}
+
+.coop-partner-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.coop-partner .coop-text {
+  max-width: 65ch;
+}
+
+.coop-partner .coop-text h2 {
+  margin-bottom: 0;
+  color: inherit;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+}
+
+.coop-image-placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border: 1px dashed #b8b8b8;
+  border-radius: 8px;
+  color: #555;
+  background: #ededed;
+}
+
+@media (max-width: 900px) {
+  .coop-example-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #rf-deer > .coop-image {
+    grid-row: 1;
+  }
+}
